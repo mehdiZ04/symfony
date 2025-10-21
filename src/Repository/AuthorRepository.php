@@ -65,5 +65,14 @@ class AuthorRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+    public function findauthorbookJoin($id){
+        return $this->createQueryBuilder('a')
+            ->innerJoin('a.books', 'b')
+            ->where('b.author = :id')
+            ->setParameter('id', $id)
+            ->getQuery()
+            ->getResult();
+    
+    }
 
 }
