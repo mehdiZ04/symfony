@@ -1,0 +1,19 @@
+<table border="3">
+    <tr>
+        <td>id</td>
+        <td>username</td>
+        <td>email</td>
+        <td>delete</td>
+        <td>edit</td>
+
+    </tr>
+    {% for i in listauthor %}
+    <tr>
+<td>{{i.id}}</td>
+<td>{{i.username}}</td>
+<td>{{i.email}}</td>
+<td><a href="{{path('app_deleteauthors',{'id':i.id})}}">delete</a></td>
+<td><a href="{{path('app_editauthors',{'id':i.id})}}">edit</a></td>
+    </tr>
+    {% endfor %}
+</table>        
