@@ -26,7 +26,7 @@ final class BookController extends AbstractController
     public function show(ManagerRegistry $doctrine): Response
     {
         $books = $doctrine->getRepository(Book::class)->findAll();
-        return $this->render('book/show.html.twig', [
+        return $this->render('book/showbook.html.twig', [
             'listbook' => $books,
         ]);
     }
@@ -42,7 +42,7 @@ final class BookController extends AbstractController
             $entityManager->persist($book);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_book');
+            return $this->redirectToRoute('app_showbook');
         }
 
         return $this->render('book/addbook.html.twig', [
@@ -65,7 +65,7 @@ final class BookController extends AbstractController
             $entityManager = $doctrine->getManager();
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_book');
+            return $this->redirectToRoute('app_showbook');
         }
 
         return $this->render('book/editbook.html.twig', [
@@ -82,7 +82,7 @@ final class BookController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('app_book');
+        return $this->redirectToRoute('app_showbook');
     }
-    
+
 }

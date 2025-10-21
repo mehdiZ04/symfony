@@ -2,7 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\Author;
+use App\Form\AuthorType;
+use App\Repository\AuthorRepository;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
@@ -16,10 +21,10 @@ final class AuthorcontrollerController extends AbstractController
         ]);
     }
 
-      #[Route('/showauthors', name: 'app_showauthors')]
+      #[Route('/showAuthors', name: 'app_showauthors')]
     public function showauthors(AuthorRepository $authorRepo): Response
     {
-        $a=$authorRepo->findAll();
+        $a= $authorRepo->trieAsc();
         return $this->render('authorcontroller/showauthors.html.twig', [
             'listauthor' => $a,
         ]);
@@ -75,8 +80,10 @@ final class AuthorcontrollerController extends AbstractController
         $em=$m->getManager();
         $f=new Author();
         $form=$this->createForm(AuthorType::class,$f);
+        
+        $form->handleRequest($request);
         if( $form->isSubmitted() && $form->isValid()){
-            $form->handleRequest($request);
+            
             $em->persist($f);
             $em->flush();
             return $this->redirectToRoute('app_showauthors');

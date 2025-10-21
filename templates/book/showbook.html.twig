@@ -14,9 +14,9 @@
     <tr>
 <td>{{i.id}}</td>
 <td>{{i.title}}</td>
-<td>{{i.publicationDate ? i.publicationDate|date('Y-m-d') : ''}}</td>
-<td>{{i.published ? 'Yes' : 'No'}}</td>
-<td>{{i.category ? i.category.name : ''}}</td>
+<td>{{i.publishdate ? i.publishdate|date('Y-m-d') : ''}}</td>
+<td>{{i.enabled}}</td>
+<td>{{i.category ? i.category : ''}}</td>
 <td>{{i.author ? i.author.username : ''}}</td>
 <td><a href="{{path('app_deletebook',{'id':i.id})}}">delete</a></td>
 <td><a href="{{path('app_editbook',{'id':i.id})}}">edit</a></td>

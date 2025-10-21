@@ -3,6 +3,7 @@
         <td>id</td>
         <td>username</td>
         <td>email</td>
+        <td>number of books</td>
         <td>delete</td>
         <td>edit</td>
 
@@ -12,6 +13,7 @@
 <td>{{i.id}}</td>
 <td>{{i.username}}</td>
 <td>{{i.email}}</td>
+<td>{{i.nbBooks}}</td>
 <td><a href="{{path('app_deleteauthors',{'id':i.id})}}">delete</a></td>
 <td><a href="{{path('app_editauthors',{'id':i.id})}}">edit</a></td>
     </tr>

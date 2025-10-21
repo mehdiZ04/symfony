@@ -8,6 +8,8 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class BookType extends AbstractType
 {
@@ -24,15 +26,12 @@ class BookType extends AbstractType
                     'Autobiography' => 'autobiography',
                 ],
             ])
-            ->add('AddAuthoor', ChoiceType::class, [
-            ])
             ->add('author', EntityType::class, [
                 'class' => Author::class,
-                'choice_label' => 'id',
+                'choice_label' => 'username', // Changed from 'id' to 'username' for better UX
             ])
             ->add('Save', SubmitType::class)        
         ;
-        
     }
 
     public function configureOptions(OptionsResolver $resolver): void

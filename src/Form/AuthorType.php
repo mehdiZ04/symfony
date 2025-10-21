@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 
 class AuthorType extends AbstractType
 {
@@ -15,6 +16,7 @@ class AuthorType extends AbstractType
         $builder
             ->add('username')
             ->add('email')
+            ->add('nb_books', IntegerType::class)
             ->add('add',SubmitType::class)
         ;
     }
