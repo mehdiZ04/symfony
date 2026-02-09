@@ -47,11 +47,6 @@ class AuthorRepository extends ServiceEntityRepository
         $query->setParameter('username', $username);
         return $query->getResult();
     }
-    public function trieAsc(){
-        $a=$this->getEntityManager();
-        $query=$a->createQuery('SELECT a FROM App\Entity\Author a Order BY a.username  ASC');
-        return $query->getResult();
-    }
     public function findauthorbyusernamee($username){
       return $this->createQueryBuilder('a')
             ->where('a.username = :username')
@@ -59,6 +54,12 @@ class AuthorRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();    
     }
+    public function trieAsc(){
+        $a=$this->getEntityManager();
+        $query=$a->createQuery('SELECT a FROM App\Entity\Author a Order BY a.username  ASC');
+        return $query->getResult();
+    }
+    
     public function trieDesc(){
         return $this->createQueryBuilder('a')
             ->orderBy('a.username', 'DESC')
