@@ -16,6 +16,16 @@ class BookType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+
+
+
+
+
+
+
+
+
+        
             ->add('title')
             ->add('publishdate')
             ->add('enabled')
